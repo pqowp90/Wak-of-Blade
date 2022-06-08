@@ -238,7 +238,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.05
     min: 0
     max: 1
   clamp:
@@ -285,7 +285,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
     min: 0
   scatter:
     m_OverrideState: 1
@@ -298,7 +298,7 @@ MonoBehaviour:
     min: 0
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.97647065, g: 0.9686275, b: 0.9568628, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -307,7 +307,7 @@ MonoBehaviour:
     m_Value: 0
   skipIterations:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
     min: 0
     max: 16
   dirtTexture:
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   gaussianStart:
     m_OverrideState: 1
     m_Value: 10
