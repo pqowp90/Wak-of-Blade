@@ -7,7 +7,7 @@ public class Attack : MonoBehaviour
     [SerializeField] private Transform _player;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             _player.GetComponent<PlayerMove>().SendMessage("Attacking", other.gameObject);
         }

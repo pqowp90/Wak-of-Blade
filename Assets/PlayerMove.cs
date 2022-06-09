@@ -19,16 +19,23 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float nowAttackSpeed = 1f;
     [SerializeField]
+    private float startAttackSpeed;
+    [SerializeField]
     private float attackingTime = 0;
     private Tween attackTween;
     [SerializeField]
     private float atkPower;
+    [SerializeField]
+    private Collider waponCollider;
+    private List<GameObject> attackedEnemy = new List<GameObject>();
     private void Start(){
+        attackedEnemy.Clear();
         speed = 5f;
         gravity = 10f;
         MoveDir = Vector3.zero;
         moveY = 0f;
         jumpPow = 5f;
+        nowAttackSpeed = startAttackSpeed;
     }
     private void Move(){
         moveY = MoveDir.y;
@@ -68,12 +75,15 @@ public class PlayerMove : MonoBehaviour
         }
     }
     public void AttackStart(){
-        attackTween = DOTween.To(()=> nowAttackSpeed, x=> nowAttackSpeed = x, attackSpeed, attackingTime).SetEase(Ease.InQuart);
+        waponCollider.enabled = true;
+        attackTween = DOTween.To(()=> nowAttackSpeed, x=> nowAttackSpeed = x, attackSpeed, attackingTime).SetEase(Ease.InCubic);
     }
     public void AttackEnd(){
+        waponCollider.enabled = false;
         attackTween.Kill();
-        nowAttackSpeed = 1f;
+        nowAttackSpeed = startAttackSpeed;
         SetAttackSpeed();
+        attackedEnemy.Clear();
     }
     private void SetAttackSpeed(){
         animator.SetFloat("AttackSpeed", nowAttackSpeed);
@@ -111,6 +121,8 @@ public class PlayerMove : MonoBehaviour
     }
     public void Attacking(GameObject obj)
     {
+        if(attackedEnemy.Find(x => x == obj) != null)return;
+        attackedEnemy.Add(obj);
         obj.GetComponent<Enemy>().TakeDamage(atkPower);
     }
 }
