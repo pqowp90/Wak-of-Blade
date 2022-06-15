@@ -6,6 +6,10 @@ using DG.Tweening;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    private Transform effectCenterPos;
+    [SerializeField]
+    private float effectDistance;
+    [SerializeField]
     private float attackDistance;
     [SerializeField]
     private float hp = 10;
@@ -19,7 +23,12 @@ public class Enemy : MonoBehaviour
     }
     [SerializeField]
     State monsterState = State.Move;
-
+    public void HitEffect(){
+        Transform bloodEffect = PoolManager.GetItem<Effect>("Blood").transform;
+        bloodEffect.position = 
+        effectCenterPos.position + 
+        new Vector3(Random.Range(-effectDistance, effectDistance), Random.Range(-effectDistance, effectDistance), Random.Range(-effectDistance, effectDistance));
+    }
     private void Start()
     {
         enemyRenderer = GetComponent<Renderer>();
@@ -82,7 +91,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Wapon"))
         {
             Debug.Log("아야");
-            StartCoroutine(ChangeColor());
+            
         }
     }
     private IEnumerator ChangeColor(){

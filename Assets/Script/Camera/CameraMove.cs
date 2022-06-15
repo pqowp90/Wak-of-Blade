@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class CameraMove : MonoBehaviour
 {
     private Transform realCamera;
@@ -18,7 +18,7 @@ public class CameraMove : MonoBehaviour
         realCamera = transform.GetChild(0);
     }
     public void ShakeCamera(){
-        
+        realCamera.DOShakeRotation(0.1f, 3f, 50, 90f, true);
     }
     void LateUpdate()
     {

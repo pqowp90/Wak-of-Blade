@@ -180,7 +180,7 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.10504202
+          time: 0.13383839
           value: 0
           inSlope: 0
           outSlope: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.9054622
+          time: 0.9166667
           value: 0
           inSlope: 0
           outSlope: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.313
     min: 0.01
     max: 1
   rounded:
@@ -476,7 +476,7 @@ MonoBehaviour:
     min: 0
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 400
     min: 0
   gaussianMaxRadius:
     m_OverrideState: 1
@@ -485,7 +485,7 @@ MonoBehaviour:
     max: 1.5
   highQualitySampling:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   focusDistance:
     m_OverrideState: 1
     m_Value: 10

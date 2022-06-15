@@ -29,6 +29,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Ease speedUpTweenType = Ease.InOutCubic;
     private List<GameObject> attackedEnemy = new List<GameObject>();
+    private CameraMove cameraMove;
     
     private void Start(){
         attackedEnemy.Clear();
@@ -38,6 +39,7 @@ public class PlayerMove : MonoBehaviour
         moveY = 0f;
         jumpPow = 5f;
         nowAttackSpeed = startAttackSpeed;
+        cameraMove = Camera.main.transform.GetComponentInParent<CameraMove>();
     }
     private void Move(){
         moveY = MoveDir.y;
@@ -147,11 +149,14 @@ public class PlayerMove : MonoBehaviour
     {
         if(attackedEnemy.Find(x => x == obj) != null)return;
         attackedEnemy.Add(obj);
-        obj.GetComponent<Enemy>().TakeDamage(atkPower);
+        Enemy enemy = obj.GetComponent<Enemy>();
+        enemy.TakeDamage(atkPower);
+        enemy.HitEffect();
+        cameraMove.ShakeCamera();
     }
     private void AttackSpeedUp(){
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")){
-            nowAttackSpeed = (animator.GetCurrentAnimatorStateInfo(0).normalizedTime*attackingTime)+1f;
+            nowAttackSpeed = (animator.GetCurrentAnimatorStateInfo(0).normalizedTime*attackingTime)+startAttackSpeed;
         }
     }
 }
