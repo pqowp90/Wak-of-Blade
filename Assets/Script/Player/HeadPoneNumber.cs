@@ -20,7 +20,7 @@ public class HeadPoneNumber : MonoBehaviour
         return DateTime.Now.ToString(("yyyy"));
     }
     private IEnumerator GetYearCorutine(){
-        int older = int.Parse(GetYear()) - 1987;
+        int older = int.Parse(GetYear()) - 1987 + 1;
         textMeshProUGUI1.text = ""+older;
         textMeshProUGUI2.text = ""+older;
         yield return new WaitForSeconds(getYearDeley);

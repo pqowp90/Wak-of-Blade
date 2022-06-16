@@ -14,8 +14,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Animator animator;
     [SerializeField]
-    private float attackSpeed=0;
-    [SerializeField]
     private float nowAttackSpeed;
     [SerializeField]
     private float startAttackSpeed;
@@ -27,7 +25,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Collider waponCollider;
     [SerializeField]
-    private Ease speedUpTweenType = Ease.InOutCubic;
     private List<GameObject> attackedEnemy = new List<GameObject>();
     private CameraMove cameraMove;
     
