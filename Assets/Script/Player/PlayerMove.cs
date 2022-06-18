@@ -8,9 +8,11 @@ public class PlayerMove : MonoBehaviour
     public float speed;
     public float jumpPow;
     public float RotateDemp;
+    public float MoveDemp;
     private float gravity;
     private float moveY;
     private Vector3 MoveDir;
+    private Vector3 realMoveDir;
     [SerializeField]
     private Animator animator;
     [SerializeField]
@@ -23,10 +25,12 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float atkPower;
     [SerializeField]
-    private Collider waponCollider;
+    public Collider waponCollider;
     [SerializeField]
     private List<GameObject> attackedEnemy = new List<GameObject>();
     private CameraMove cameraMove;
+    public bool NoInput = false;
+    public Item nowWapon;
     
     private void Start(){
         attackedEnemy.Clear();
@@ -39,7 +43,7 @@ public class PlayerMove : MonoBehaviour
         cameraMove = Camera.main.transform.GetComponentInParent<CameraMove>();
     }
     private void Move(){
-        moveY = MoveDir.y;
+        moveY = realMoveDir.y;
 
         Transform CameraTransform = Camera.main.transform;
         Vector3 forward = CameraTransform.TransformDirection(Vector3.forward);
@@ -47,7 +51,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
 
-        if((!animator.GetBool("Attacking"))||(!characterController.isGrounded && animator.GetBool("Attacking"))){
+        if((isNotAttacking()||!characterController.isGrounded)&&!NoInput){
             float vertical = Input.GetAxisRaw("Vertical");
             float horizontal = Input.GetAxisRaw("Horizontal");
             MoveDir = horizontal * right + vertical * forward;
@@ -60,7 +64,7 @@ public class PlayerMove : MonoBehaviour
         
         if(MoveDir != Vector3.zero){
             animator.SetBool("Runing", true);
-            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")){
+            if(isNotAttacking()){
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(MoveDir), RotateDemp * Time.deltaTime);
             }
         }
@@ -68,23 +72,27 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("Runing", false);
         }
         MoveDir *= speed;
-        MoveDir.y = moveY;
+        realMoveDir = Vector3.Lerp(realMoveDir, MoveDir, MoveDemp*Time.deltaTime);
+        realMoveDir.y = moveY;
         animator.SetFloat("VelocityY", moveY);
         animator.SetBool("IsGround", characterController.isGrounded);
         if(characterController.isGrounded){
-            if(Input.GetButton("Jump")){
-                MoveDir.y = jumpPow;
+            if(Input.GetButton("Jump")&&!NoInput){
+                realMoveDir.y = jumpPow;
                 animator.SetTrigger("Jump");
             }
         }
         else{
-            MoveDir.y -= gravity * Time.deltaTime;
+            realMoveDir.y -= gravity * Time.deltaTime;
         }
 
-        characterController.Move(MoveDir * Time.deltaTime);
+        characterController.Move(realMoveDir * Time.deltaTime);
+    }
+    private bool isNotAttacking(){
+        return !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")&&!animator.GetBool("Attacking");
     }
     private void Attack(){
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0)&&!NoInput&&nowWapon != null){
             animator.SetBool("Attacking", true);
             
         }
@@ -96,12 +104,10 @@ public class PlayerMove : MonoBehaviour
         attackedEnemy.Clear();
         SetAttackSpeed();
         waponCollider.enabled = true;
-        //attackTween = DOTween.To(()=> nowAttackSpeed, x=> nowAttackSpeed = x, attackSpeed, attackingTime).SetEase(speedUpTweenType);
     }
     public void AttackEnd(){
         waponCollider.enabled = false;
         nowAttackSpeed = startAttackSpeed;
-        //attackTween.Kill();
     }
     private void SetAttackSpeed(){
         animator.SetFloat("AttackSpeed", nowAttackSpeed);
@@ -147,7 +153,7 @@ public class PlayerMove : MonoBehaviour
         if(attackedEnemy.Find(x => x == obj) != null)return;
         attackedEnemy.Add(obj);
         Enemy enemy = obj.GetComponent<Enemy>();
-        enemy.TakeDamage(atkPower);
+        enemy.TakeDamage(atkPower+nowWapon.damage);
         enemy.HitEffect();
         cameraMove.ShakeCamera();
     }

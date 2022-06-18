@@ -23,4 +23,5 @@ public class Item : ScriptableObject
     public int attackSpeed;
     //장신구
     public int additionalAttackSpeed;
+    public string PrefabName;
 }

@@ -14,6 +14,7 @@ public class CameraMove : MonoBehaviour
     private float mouseSpeed;
     private float mouseX;
     private float mouseY;
+    public bool NoInput;
     private void Start(){
         realCamera = transform.GetChild(0);
     }
@@ -36,6 +37,7 @@ public class CameraMove : MonoBehaviour
         }
     }
     private void CameraRotate(){
+        if(NoInput)return;
         mouseX += Input.GetAxis("Mouse X") * mouseSpeed;
         mouseY += Input.GetAxis("Mouse Y") * mouseSpeed;
 

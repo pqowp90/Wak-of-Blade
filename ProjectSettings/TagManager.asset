@@ -16,8 +16,8 @@ TagManager:
   - Enemy
   - Particle
   - Item
-  - 
-  - 
+  - Camera
+  - WorldObject
   - 
   - 
   - 

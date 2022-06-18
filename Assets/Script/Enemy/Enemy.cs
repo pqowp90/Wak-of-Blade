@@ -12,12 +12,15 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float attackDistance;
     [SerializeField]
+    private float sightDistance;
+    [SerializeField]
     private float hp = 10;
     public float speed = 10;
     CharacterController characterController;
     private Renderer enemyRenderer;
     GameObject target;
     public enum State{
+        Idle,
         Move,
         Attack,
     }
@@ -56,12 +59,12 @@ public class Enemy : MonoBehaviour
             nextPos.y -= 9.8f * Time.deltaTime;
         }
         switch(monsterState){
+            case State.Idle:
+            break;
             case State.Move:
             characterController.Move(nextPos);
-            enemyRenderer.material.color = new Color(1f, 1f, 1f);
             break;
             case State.Attack:
-            enemyRenderer.material.color = new Color(0.3f, 0f, 0f);
             break;
             default:
             break;
@@ -69,20 +72,25 @@ public class Enemy : MonoBehaviour
     }
     private void ChangeState(){
         if(Vector3.Distance(transform.position, target.transform.position)>attackDistance){
-            monsterState = State.Move;
+            if(Vector3.Distance(transform.position, target.transform.position)>sightDistance){
+                monsterState = State.Idle;
+            }else{
+                monsterState = State.Move;
+            }
         }else{
             monsterState = State.Attack;
         }
     }
+    int count = 0;
     public void TakeDamage(float damage)
     {
+        count++;
+        Debug.Log(count);
         hp -= damage;
 
-        Debug.Log(hp);
 
         if (hp <= 0)
         {
-            Debug.Log("사망");
             Destroy(gameObject);
         }
     }
@@ -90,7 +98,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Wapon"))
         {
-            Debug.Log("아야");
             
         }
     }
