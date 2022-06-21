@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
@@ -470,7 +470,7 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.20707071
+          time: 0.17424242
           value: 0
           inSlope: 0
           outSlope: 0
@@ -488,8 +488,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.6691919
-          value: 0.2673797
+          time: 0.68434346
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -497,7 +497,7 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.760101
+          time: 0.74747473
           value: 0
           inSlope: -0.860989
           outSlope: -0.860989

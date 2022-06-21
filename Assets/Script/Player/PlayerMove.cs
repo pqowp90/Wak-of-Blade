@@ -51,7 +51,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
 
-        if((isNotAttacking()||!characterController.isGrounded)&&!NoInput){
+        if((isNotAttacking()||!characterController.isGrounded)){
             float vertical = Input.GetAxisRaw("Vertical");
             float horizontal = Input.GetAxisRaw("Horizontal");
             MoveDir = horizontal * right + vertical * forward;
@@ -77,7 +77,7 @@ public class PlayerMove : MonoBehaviour
         animator.SetFloat("VelocityY", moveY);
         animator.SetBool("IsGround", characterController.isGrounded);
         if(characterController.isGrounded){
-            if(Input.GetButton("Jump")&&!NoInput){
+            if(Input.GetButton("Jump")){
                 realMoveDir.y = jumpPow;
                 animator.SetTrigger("Jump");
             }

@@ -30,7 +30,7 @@ public class Inventory : MonoSingleton<Inventory>
         cameraMove = FindObjectOfType<CameraMove>();
     }
     public void Update(){
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(Input.GetKeyDown(KeyCode.Tab)||(InventoryUI.activeSelf&&Input.GetKeyDown(KeyCode.Escape))){
             InventoryUI.SetActive(!InventoryUI.activeSelf);
             playerMove.NoInput = InventoryUI.activeSelf;
             cameraMove.NoInput = InventoryUI.activeSelf;
