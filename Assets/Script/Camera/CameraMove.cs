@@ -14,7 +14,18 @@ public class CameraMove : MonoBehaviour
     private float mouseSpeed;
     private float mouseX;
     private float mouseY;
+    private float mouseX2=1f;
+    private float mouseY2=1f;
     public bool NoInput;
+    public void SlowMouse(bool active){
+        if(active){
+            mouseX2 = 0.1f;
+            mouseY2 = 0.2f;
+        }else{
+            mouseX2 = 1f;
+            mouseY2 = 1f;
+        }
+    }
     private void Start(){
         realCamera = transform.GetChild(0);
     }
@@ -38,8 +49,8 @@ public class CameraMove : MonoBehaviour
     }
     private void CameraRotate(){
         if(NoInput)return;
-        mouseX += Input.GetAxis("Mouse X") * mouseSpeed;
-        mouseY += Input.GetAxis("Mouse Y") * mouseSpeed;
+        mouseX += Input.GetAxis("Mouse X") * mouseSpeed * mouseX2;
+        mouseY += Input.GetAxis("Mouse Y") * mouseSpeed * mouseY2;
 
         mouseX = (mouseX > 180.0f) ? mouseX - 360.0f : mouseX;
         mouseY = (mouseY > 180.0f) ? mouseY - 360.0f : mouseY;

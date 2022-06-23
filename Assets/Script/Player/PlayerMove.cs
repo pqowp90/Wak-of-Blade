@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour
     private List<GameObject> attackedEnemy = new List<GameObject>();
     private CameraMove cameraMove;
     public bool NoInput = false;
+    private bool usingSkill = false;
     public Item nowWapon;
     
     private void Start(){
@@ -51,7 +52,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
 
-        if((isNotAttacking()||!characterController.isGrounded)){
+        if(((isNotAttacking()||!characterController.isGrounded)&&!usingSkill)){
             float vertical = Input.GetAxisRaw("Vertical");
             float horizontal = Input.GetAxisRaw("Horizontal");
             MoveDir = horizontal * right + vertical * forward;
@@ -77,7 +78,7 @@ public class PlayerMove : MonoBehaviour
         animator.SetFloat("VelocityY", moveY);
         animator.SetBool("IsGround", characterController.isGrounded);
         if(characterController.isGrounded){
-            if(Input.GetButton("Jump")){
+            if(Input.GetButton("Jump")&&!usingSkill){
                 realMoveDir.y = jumpPow;
                 animator.SetTrigger("Jump");
             }
@@ -92,7 +93,7 @@ public class PlayerMove : MonoBehaviour
         return !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")&&!animator.GetBool("Attacking");
     }
     private void Attack(){
-        if(Input.GetMouseButtonDown(0)&&!NoInput&&nowWapon != null){
+        if(Input.GetMouseButtonDown(0)&&!NoInput&&nowWapon != null&&!usingSkill){
             animator.SetBool("Attacking", true);
             
         }
@@ -112,7 +113,7 @@ public class PlayerMove : MonoBehaviour
     private void SetAttackSpeed(){
         animator.SetFloat("AttackSpeed", nowAttackSpeed);
         animator.SetFloat("AirAttack", (characterController.isGrounded)?0f:1f);
-        animator.SetBool("PressingJump", Input.GetKey(KeyCode.Space));
+        animator.SetBool("PressingJump", Input.GetKey(KeyCode.Space)&&!usingSkill);
     }
     private void Update() {
         Move();
@@ -121,6 +122,9 @@ public class PlayerMove : MonoBehaviour
     }
     private void FixedUpdate() {
         AttackSpeedUp();
+    }
+    public void SetUsingSkill(bool _usingSkill){
+        usingSkill = _usingSkill;
     }
     private void OnGUI()
     {
