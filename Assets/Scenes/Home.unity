@@ -5470,7 +5470,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -6570,7 +6570,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -7046,7 +7046,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -7485,7 +7485,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -11503,10 +11503,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
-  m_Center: {x: 0, y: -0.19, z: 0}
+  m_Center: {x: 0, y: -0.19, z: 0.030755997}
 --- !u!143 &485613995
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12080,7 +12080,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -12454,7 +12454,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -14647,10 +14647,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.7745773
   m_Height: 1.6
   m_Direction: 1
-  m_Center: {x: 0, y: -0.19, z: 0}
+  m_Center: {x: -0.015422696, y: -0.18999997, z: 0}
 --- !u!143 &896828988
 CharacterController:
   m_ObjectHideFlags: 0
@@ -15722,7 +15722,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -15972,7 +15972,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -16422,7 +16422,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -17949,7 +17949,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -18170,7 +18170,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -19391,7 +19391,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -20367,7 +20367,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -21582,7 +21582,7 @@ MonoBehaviour:
   attackingTime: 100
   fillBar: {fileID: 1422401386}
   hpChangeSpeed: 7
-  textMeshProUGUI: {fileID: 0}
+  textMeshProUGUI: {fileID: 795536675}
 --- !u!114 &1833387844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22485,7 +22485,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -23314,7 +23314,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -23623,7 +23623,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.759244
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}

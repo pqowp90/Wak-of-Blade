@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
             case State.Idle:
             break;
             case State.Move:
-            characterController.Move(nextPos);
+            characterController?.Move(nextPos);
             break;
             case State.Attack:
             break;
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.gameObject.CompareTag("Player")){
-            hit.gameObject.GetComponent<PlayerMove>().loseHp(damage);
+            hit.gameObject.GetComponent<PlayerMove>()?.loseHp(damage);
         }
         // 충돌된 물체의 릿지드 바디를 가져옴
         Rigidbody body = hit.collider.attachedRigidbody;

@@ -246,7 +246,8 @@ public class PlayerMove : MonoBehaviour
         labelStyle.fontSize = 50;
         labelStyle.normal.textColor = Color.white;
         //캐릭터 현재 속도
-        GUILayout.Label("Y보정치 : " + downForce.y, labelStyle);
+        //GUILayout.Label("Y보정치 : " + downForce.y, labelStyle);
+        GUILayout.Label("HP : " + hp, labelStyle);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
