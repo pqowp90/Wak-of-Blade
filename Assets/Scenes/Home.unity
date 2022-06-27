@@ -21570,7 +21570,7 @@ MonoBehaviour:
   addForce: {x: 0, y: 0, z: 0}
   resistance: 0.3
   atkPower: 2
-  maxHp: 100
+  maxHp: 10000
   speed: 6
   jumpPow: 7
   RotateDemp: 20

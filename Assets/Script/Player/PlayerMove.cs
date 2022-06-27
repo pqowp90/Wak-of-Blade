@@ -92,7 +92,8 @@ public class PlayerMove : MonoBehaviour
         if(hp<=0)return;
         hp -= _hp;
         if(hp<=0){
-            SceneMoveManager.Instance.SceneMove("Home");
+            MoveTransorm(new Vector3(19.961f, -0.453f, -38.576f));
+            hp = maxHp;
         }
         textMeshProUGUI.text = ""+hp+"/"+maxHp;
     }
