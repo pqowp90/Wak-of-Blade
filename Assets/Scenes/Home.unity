@@ -5506,7 +5506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 33642190}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -6606,7 +6606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 133427431}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -7082,7 +7082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 193572166}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -7521,7 +7521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 237358292}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -11539,7 +11539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 485613999}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -12116,7 +12116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 578078457}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -12490,7 +12490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 615479254}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -13898,15 +13898,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.43
+      value: 1.096113
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.43
+      value: 1.096113
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.43
+      value: 1.096113
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14683,7 +14683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 896828992}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -15758,7 +15758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1086796986}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -16008,7 +16008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1134126932}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -16458,7 +16458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1194993842}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -17949,7 +17949,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.759244
+  m_Radius: 1.39
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.19, z: 0}
@@ -17965,12 +17965,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.6
-  m_Radius: 0.79
+  m_Radius: 1.39
   m_SlopeLimit: 45
   m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.19, z: 0}
+  m_Center: {x: 0, y: 0.31, z: 0}
 --- !u!114 &1434180891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17985,11 +17985,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1434180894}
-  effectDistance: 0.5
+  effectDistance: 2.7
   attackDistance: 2
-  sightDistance: 10
-  hp: 100
-  maxHp: 100
+  sightDistance: 100
+  hp: 1000
+  maxHp: 1000
   speed: 3
   hpbar: {fileID: 0}
   damage: 1
@@ -18206,7 +18206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1443592884}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -19427,7 +19427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1617896239}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -20403,7 +20403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1710365093}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -22521,7 +22521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 1925391047}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -23350,7 +23350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 2056983106}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
@@ -23659,7 +23659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   effectCenterPos: {fileID: 2069829370}
-  effectDistance: 0.5
+  effectDistance: 1.4
   attackDistance: 2
   sightDistance: 10
   hp: 100
