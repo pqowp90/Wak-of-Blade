@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void PlayerHpBar(){
-        realFillAmount = hp/maxHp;
+        fillAmount = hp/maxHp;
         realFillAmount = Mathf.Lerp(realFillAmount, fillAmount, Time.deltaTime * hpChangeSpeed);
         fillBar.fillAmount = realFillAmount;
     }

@@ -5513,7 +5513,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &33642188
 MeshRenderer:
@@ -6613,7 +6613,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &133427429
 MeshRenderer:
@@ -6672,8 +6672,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133427425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.164, y: 0.5, z: 23.903997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -10.164, y: 2.4, z: 23.903997}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 886509797}
   m_Father: {fileID: 0}
@@ -7089,7 +7089,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &193572164
 MeshRenderer:
@@ -7528,7 +7528,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &237358290
 MeshRenderer:
@@ -7587,8 +7587,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237358286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.796, y: 0.5, z: 9.639999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -19.796, y: 2.4, z: 9.639999}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 1956191548}
   m_Father: {fileID: 0}
@@ -11546,7 +11546,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &485613997
 MeshRenderer:
@@ -11605,8 +11605,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485613993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.948, y: 0.5, z: 14.863998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -10.948, y: 2.4, z: 14.863998}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 881335480}
   m_Father: {fileID: 0}
@@ -12123,7 +12123,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &578078455
 MeshRenderer:
@@ -12497,7 +12497,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &615479252
 MeshRenderer:
@@ -12556,8 +12556,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615479248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.995998, y: 0.5, z: 27.439999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -14.995998, y: 2.4, z: 27.439999}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 2006824668}
   m_Father: {fileID: 0}
@@ -15765,7 +15765,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &1086796984
 MeshRenderer:
@@ -16015,7 +16015,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &1134126930
 MeshRenderer:
@@ -16074,8 +16074,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134126926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3799992, y: 0.5, z: 6.9119987}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.3799992, y: 2.4, z: 6.9119987}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 2108811356}
   m_Father: {fileID: 0}
@@ -16465,7 +16465,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &1194993840
 MeshRenderer:
@@ -16524,8 +16524,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194993836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.108, y: 0.5, z: -1.8880043}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10.108, y: 2.4, z: -1.8880043}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 1665005313}
   m_Father: {fileID: 0}
@@ -17992,7 +17992,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &1434180892
 MeshRenderer:
@@ -18213,7 +18213,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &1443592882
 MeshRenderer:
@@ -18272,8 +18272,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443592878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.9, y: 0.5, z: 16.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -22.9, y: 2.4, z: 16.8}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 742527635}
   m_Father: {fileID: 0}
@@ -19434,7 +19434,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &1617896237
 MeshRenderer:
@@ -20410,7 +20410,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &1710365091
 MeshRenderer:
@@ -20469,8 +20469,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710365087}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6200008, y: 0.5, z: 22.447998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.6200008, y: 2.4, z: 22.447998}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 1108457483}
   m_Father: {fileID: 0}
@@ -22528,7 +22528,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &1925391045
 MeshRenderer:
@@ -23357,7 +23357,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 3
+  damage: 1
   monsterState: 0
 --- !u!23 &2056983104
 MeshRenderer:
@@ -23416,8 +23416,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056983100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3640003, y: 0.5, z: 18.175999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.3640003, y: 2.4, z: 18.175999}
+  m_LocalScale: {x: 3.1318, y: 3.1318, z: 3.1318}
   m_Children:
   - {fileID: 1725516974}
   m_Father: {fileID: 0}
@@ -23666,7 +23666,7 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   hpbar: {fileID: 0}
-  damage: 10
+  damage: 1
   monsterState: 0
 --- !u!23 &2069829368
 MeshRenderer:
