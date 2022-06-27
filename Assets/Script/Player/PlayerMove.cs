@@ -49,6 +49,7 @@ public class PlayerMove : MonoBehaviour
     private float attackingTime = 0;
     private Tween attackTween;
     private bool willSlideOnSlope = true;
+    private Vector3 downForce;
     private int hp;
     private bool IsSliding{
         get{
@@ -85,6 +86,7 @@ public class PlayerMove : MonoBehaviour
     }
     
     private void Start(){
+        hp = maxHp;
         attackedEnemy.Clear();
         MoveDir = Vector3.zero;
         moveY = 0f;
@@ -142,13 +144,15 @@ public class PlayerMove : MonoBehaviour
         else{
             animator.SetBool("Runing", false);
         }
+        
+        downForce = Vector3.zero;
         if(willSlideOnSlope && IsSliding && characterController.isGrounded){
             realMoveDir += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
         }else if(realMoveDir.y < 0){
-            realMoveDir.y -= DowmDowm;
+            downForce = -DowmDowm * Vector3.up;
         }
 
-        characterController.Move((realMoveDir + addForce) * Time.deltaTime);
+        characterController.Move((realMoveDir + addForce + downForce) * Time.deltaTime);
     }
     private bool isNotAttacking(){
         return !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")&&!animator.GetBool("Attacking");
@@ -207,7 +211,7 @@ public class PlayerMove : MonoBehaviour
         labelStyle.fontSize = 50;
         labelStyle.normal.textColor = Color.white;
         //캐릭터 현재 속도
-        GUILayout.Label("현재 공격속도 : " + nowAttackSpeed, labelStyle);
+        GUILayout.Label("Y보정치 : " + downForce.y, labelStyle);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {

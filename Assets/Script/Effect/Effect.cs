@@ -13,5 +13,6 @@ public class Effect : MonoBehaviour, IPoolable
     private IEnumerator distroyEffect(){
         yield return new WaitForSeconds(lifeTime);
         gameObject.SetActive(false);
+        transform.SetParent(GameManager.Instance.transform);
     }
 }

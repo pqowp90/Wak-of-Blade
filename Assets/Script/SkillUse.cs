@@ -26,6 +26,8 @@ public class SkillUse : MonoBehaviour
     private LayerMask layermask;
     [SerializeField]
     private Transform ChargeEffectPos;
+    [SerializeField]
+    private Transform UppercutEffectPos;
     private Coroutine UppercutCoroutine;
     private void Start() {
         playerMove = GetComponent<PlayerMove>();
@@ -57,10 +59,17 @@ public class SkillUse : MonoBehaviour
         animator.ResetTrigger("UppercutOff");
         animator.SetTrigger("Uppercut");
         yield return new WaitForSeconds(0.25f);
-        playerMove.addForceGo(transform.rotation*new Vector3(0f, 10f, 5f));
+        playerMove.addForceGo(transform.rotation*new Vector3(0f, 9f, 5f));
         cameraMove.ShakeCamera(0.15f, Vector3.up, 40, 90);
         playerMove.SetUsingSkill(false);
         TrailsOn(true, false);
+
+        Transform effectTransform = PoolManager.GetItem<Effect>("UppercutEffect").transform;
+        effectTransform.position = UppercutEffectPos.position;
+        effectTransform.rotation = UppercutEffectPos.rotation;
+        effectTransform.SetParent(null);
+
+
         yield return new WaitForSeconds(0.2f);
         animator.SetTrigger("UppercutOff");
         Uppercuting  = false;
