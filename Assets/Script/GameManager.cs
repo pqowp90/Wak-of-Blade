@@ -8,6 +8,7 @@ public class GameManager : MonoSingleton<GameManager>
         PoolManager.CreatePool<Effect>("Blood", gameObject);
         PoolManager.CreatePool<Effect>("ChargeEffect", gameObject);
         PoolManager.CreatePool<Effect>("UppercutEffect", gameObject);
+        PoolManager.CreatePool<Hpbar>("HpBar", gameObject);
     }
     public static void CurserOnOff(bool active){
         Cursor.visible = active;

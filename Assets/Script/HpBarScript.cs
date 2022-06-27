@@ -13,7 +13,7 @@ public class HpBarScript : MonoBehaviour
     void Start()
     {
         m_camera = Camera.main;
-        PoolManager.CreatePool<Hpbar>("HpBar", gameObject);
+        
 
         Enemy[] t_Object = GameObject.FindObjectsOfType<Enemy>();
         foreach (var g_Object in t_Object)
