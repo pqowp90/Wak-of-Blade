@@ -14,11 +14,14 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float sightDistance;
     [SerializeField]
-    private float hp = 10;
+    private float hp;
+    [SerializeField]
+    private float maxHp = 10;
     public float speed = 10;
     CharacterController characterController;
     private Renderer enemyRenderer;
     GameObject target;
+    public Hpbar hpbar;
     public enum State{
         Idle,
         Move,
@@ -34,6 +37,7 @@ public class Enemy : MonoBehaviour
     }
     private void Start()
     {
+        hp = maxHp;
         enemyRenderer = GetComponent<Renderer>();
         characterController = GetComponent<CharacterController>();
         target = FindObjectOfType<PlayerMove>().gameObject;
@@ -82,12 +86,16 @@ public class Enemy : MonoBehaviour
         }
     }
     int count = 0;
+    public void SetHpbar(Hpbar _hpbar){
+        hpbar = _hpbar;
+
+        hpbar?.UpdateHpbar(hp/maxHp);
+    }
     public void TakeDamage(float damage)
     {
         count++;
-        Debug.Log(count);
         hp -= damage;
-
+        hpbar?.UpdateHpbar(hp/maxHp);
 
         if (hp <= 0)
         {

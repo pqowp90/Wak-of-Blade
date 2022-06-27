@@ -34,10 +34,11 @@ public class Inventory : MonoSingleton<Inventory>
             InventoryUI.SetActive(!InventoryUI.activeSelf);
             playerMove.NoInput = InventoryUI.activeSelf;
             cameraMove.NoInput = InventoryUI.activeSelf;
-            Cursor.visible = InventoryUI.activeSelf;
-            Cursor.lockState = InventoryUI.activeSelf?CursorLockMode.None:CursorLockMode.Locked;
+            GameManager.CurserOnOff(InventoryUI.activeSelf);
+            
         }
     }
+
     public void AddItem(Item item, GameObject itemObject){
         if(isFull())return;
         itemObject.SetActive(false);

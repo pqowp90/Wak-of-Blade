@@ -14,6 +14,8 @@ public class WaponManager : MonoSingleton<WaponManager>
         playerMove = FindObjectOfType<PlayerMove>();
     }
     public void SetWaponThis(Item item){
+        if(playerMove==null)playerMove = FindObjectOfType<PlayerMove>();
+        if(playerMove==null)return;
         if(item == null){
             playerMove.nowWapon = null;
             lastWapon?.gameObject.SetActive(false);

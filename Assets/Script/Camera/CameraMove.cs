@@ -5,6 +5,7 @@ using DG.Tweening;
 public class CameraMove : MonoBehaviour
 {
     private Transform realCamera;
+    private Transform fakeCamera;
     public Transform objTargetTransform;
     public float distance, heightDamping, rotationDamping, posDemping;
     private Vector3 targetPos;
@@ -17,23 +18,32 @@ public class CameraMove : MonoBehaviour
     private float mouseX2=1f;
     private float mouseY2=1f;
     public bool NoInput;
+    [SerializeField]
+    private Transform emptyObject;
     public void SlowMouse(bool active){
         if(active){
-            mouseX2 = 0.1f;
-            mouseY2 = 0.2f;
+            mouseX2 = 0.05f;
+            mouseY2 = 0.1f;
         }else{
             mouseX2 = 1f;
             mouseY2 = 1f;
         }
     }
     private void Start(){
-        realCamera = transform.GetChild(0);
+        fakeCamera = transform.GetChild(0);
+        realCamera = fakeCamera.GetChild(0);
     }
-    public void ShakeCamera(){
-        realCamera.DOShakeRotation(0.1f, 3f, 50, 90f, true);
+    public void ShakeCamera(float duration, float strength = 1, int vibrato = 10, float randomness = 90, bool snapping = false, bool fadeOut = true){
+        realCamera.DOShakePosition(duration, strength, vibrato, randomness, snapping, fadeOut).OnComplete(()=>{emptyObject.position = Vector3.zero;});
+        
+    }
+    public void ShakeCamera(float duration, Vector3 strength, int vibrato = 10, float randomness = 90, bool snapping = false, bool fadeOut = true){
+        realCamera.DOShakePosition(duration, strength, vibrato, randomness, snapping, fadeOut).OnComplete(()=>{emptyObject.position = Vector3.zero;});
+        
     }
     void LateUpdate()
-    {
+    {   
+        fakeCamera.localPosition = Vector3.Lerp(fakeCamera.localPosition, -realCamera.localPosition, 0.03f);
         CameraRotate();
         CameraMoveFunc();
     }
@@ -42,7 +52,7 @@ public class CameraMove : MonoBehaviour
         Vector3 lookDirect = -(transform.forward * distance);
         RaycastHit raycastHit;
         if(Physics.Raycast(targetPos, lookDirect, out raycastHit, lookDirect.magnitude, layerMask)){
-            transform.position = raycastHit.point;
+            transform.position = Vector3.Lerp(objTargetTransform.position, raycastHit.point, 0.97f);
         }else{
             transform.position = targetPos + lookDirect;
         }
