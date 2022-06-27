@@ -44,7 +44,7 @@ public class ItemCheckBottom : MonoBehaviour
                 selectedCollider = collider;
             }
         }
-        npc = GetComponent<NPC>();
+        npc = selectedCollider.GetComponent<NPC>();
         return true;
     }
     void Update()
@@ -60,6 +60,7 @@ public class ItemCheckBottom : MonoBehaviour
             }
         }else if(ChackForward()){
             ShowKeyUI.Instance.ShowUI(Key_UI_State.talk);
+            npc.GoTalk();
         }
         
     }

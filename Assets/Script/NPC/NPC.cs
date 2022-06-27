@@ -26,6 +26,6 @@ public class NPC : MonoBehaviour
         }
     }
     public void GoTalk(){
-
+        
     }
 }

@@ -62,7 +62,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI textMeshProUGUI;
     private bool movePos = false;
-    private Vector2 pos;
+    private Vector3 pos;
     public void MoveTransorm(Vector3 _pos){
         pos = _pos;
         movePos = true;
