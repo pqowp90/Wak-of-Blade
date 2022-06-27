@@ -6,6 +6,8 @@ using DG.Tweening;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    private int gold;
+    [SerializeField]
     private Transform effectCenterPos;
     [SerializeField]
     private float effectDistance;
@@ -22,6 +24,8 @@ public class Enemy : MonoBehaviour
     private Renderer enemyRenderer;
     GameObject target;
     public Hpbar hpbar;
+    [SerializeField]
+    private int damage;
     public enum State{
         Idle,
         Move,
@@ -99,6 +103,7 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
+            PlayerGoldManager.Instance.AddGold(gold);
             Destroy(gameObject);
         }
     }
@@ -116,6 +121,9 @@ public class Enemy : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if(hit.gameObject.CompareTag("Player")){
+            hit.gameObject.GetComponent<PlayerMove>().loseHp(damage);
+        }
         // 충돌된 물체의 릿지드 바디를 가져옴
         Rigidbody body = hit.collider.attachedRigidbody;
 

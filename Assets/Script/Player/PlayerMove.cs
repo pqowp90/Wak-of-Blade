@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 public class PlayerMove : MonoBehaviour
 {
     private bool lastIsGrounded = false;
@@ -51,6 +53,20 @@ public class PlayerMove : MonoBehaviour
     private bool willSlideOnSlope = true;
     private Vector3 downForce;
     private int hp;
+    [SerializeField]
+    Image fillBar;
+    private float fillAmount;
+    private float realFillAmount;
+    [SerializeField]
+    private float hpChangeSpeed;
+    [SerializeField]
+    TextMeshProUGUI textMeshProUGUI;
+    private bool movePos = false;
+    private Vector2 pos;
+    public void MoveTransorm(Vector3 _pos){
+        pos = _pos;
+        movePos = true;
+    }
     private bool IsSliding{
         get{
             Debug.DrawRay(transform.position, Vector3.down*2f, Color.blue);
@@ -72,8 +88,20 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+    public void loseHp(int _hp){
+        if(hp<=0)return;
+        hp -= _hp;
+        if(hp<=0){
+            SceneMoveManager.Instance.SceneMove("Home");
+        }
+        textMeshProUGUI.text = ""+hp+"/"+maxHp;
+    }
 
-    
+    private void PlayerHpBar(){
+        realFillAmount = hp/maxHp;
+        realFillAmount = Mathf.Lerp(realFillAmount, fillAmount, Time.deltaTime * hpChangeSpeed);
+        fillBar.fillAmount = realFillAmount;
+    }
     public void addForceGo(Vector3 velocity){
         moveY = velocity.y;
         realMoveDir.y = velocity.y;
@@ -151,7 +179,13 @@ public class PlayerMove : MonoBehaviour
         }else if(realMoveDir.y < 0){
             downForce = -DowmDowm * Vector3.up;
         }
-
+        if(movePos){
+            characterController.enabled = false;
+            movePos = false;
+            transform.position = pos;
+            characterController.enabled = true;
+            return;
+        }
         characterController.Move((realMoveDir + addForce + downForce) * Time.deltaTime);
     }
     private bool isNotAttacking(){
@@ -184,6 +218,7 @@ public class PlayerMove : MonoBehaviour
         Move();
         SetAttackSpeed();
         Attack();
+        PlayerHpBar();
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("AttackWait")){
             animator.SetTrigger("GoAttack");
             AttackStart();
