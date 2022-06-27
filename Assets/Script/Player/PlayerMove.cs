@@ -99,7 +99,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void PlayerHpBar(){
-        fillAmount = hp/maxHp;
+        fillAmount = (float)hp/(float)maxHp;
         realFillAmount = Mathf.Lerp(realFillAmount, fillAmount, Time.deltaTime * hpChangeSpeed);
         fillBar.fillAmount = realFillAmount;
     }
@@ -121,6 +121,7 @@ public class PlayerMove : MonoBehaviour
         moveY = 0f;
         nowAttackSpeed = startAttackSpeed;
         cameraMove = Camera.main.transform.GetComponentInParent<CameraMove>();
+        loseHp(0);
     }
     private void Move(){
         moveY = realMoveDir.y;
@@ -248,7 +249,7 @@ public class PlayerMove : MonoBehaviour
         labelStyle.normal.textColor = Color.white;
         //캐릭터 현재 속도
         //GUILayout.Label("Y보정치 : " + downForce.y, labelStyle);
-        GUILayout.Label("HP : " + hp, labelStyle);
+        GUILayout.Label("차지:Shift 올려베기:우클릭", labelStyle);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
