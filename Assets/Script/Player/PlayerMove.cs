@@ -62,12 +62,13 @@ public class PlayerMove : MonoBehaviour
     private float hpChangeSpeed;
     [SerializeField]
     TextMeshProUGUI textMeshProUGUI;
-    private bool movePos = false;
-    private Vector3 pos;
+
     public GameObject dieImage;
-    public void MoveTransorm(Vector3 _pos){
-        pos = _pos;
-        movePos = true;
+    public void MoveTransorm(Vector3 _pos, bool heal){
+        characterController.enabled = false;
+        transform.position = _pos;
+        characterController.enabled = true;
+        if(heal)hp = maxHp;
     }
     private bool IsSliding{
         get{
@@ -95,8 +96,7 @@ public class PlayerMove : MonoBehaviour
         hp -= _hp;
         if(hp<=0){
             dieImage.SetActive(true);
-            MoveTransorm(new Vector3(19.961f, -0.453f, -38.576f));
-            hp = maxHp;
+            MoveTransorm(new Vector3(19.961f, -0.453f, -38.576f), true);
         }
         textMeshProUGUI.text = ""+hp+"/"+maxHp;
     }
@@ -184,13 +184,7 @@ public class PlayerMove : MonoBehaviour
         }else if(realMoveDir.y < 0){
             downForce = -DowmDowm * Vector3.up;
         }
-        if(movePos){
-            characterController.enabled = false;
-            movePos = false;
-            transform.position = pos;
-            characterController.enabled = true;
-            return;
-        }
+        
         characterController.Move((realMoveDir + addForce + downForce) * Time.deltaTime);
     }
     private bool isNotAttacking(){
@@ -259,7 +253,7 @@ public class PlayerMove : MonoBehaviour
         labelStyle.normal.textColor = Color.white;
         //캐릭터 현재 속도
         //GUILayout.Label("Y보정치 : " + downForce.y, labelStyle);
-        GUILayout.Label("차지:Shift 올려베기:우클릭", labelStyle);
+        GUILayout.Label("차지:Shift 올려베기:우클릭 인벤토리:Tap", labelStyle);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {

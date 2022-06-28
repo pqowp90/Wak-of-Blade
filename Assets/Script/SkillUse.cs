@@ -51,11 +51,13 @@ public class SkillUse : MonoBehaviour
         if(UppercutCoroutine!=null){
             StopCoroutine(UppercutCoroutine);
             Uppercuting = false;
+            
             TrailsOn(false, true);
             playerMove.SetUsingSkill(false);
         }
         
-
+        animator.ResetTrigger("ChargeStart");
+        animator.ResetTrigger("ChargeEnd");
         playerMove.SetUsingSkill(true);
         TrailsOn(true, false);
         animator.SetTrigger("ChargeStart");
