@@ -60,7 +60,10 @@ public class ItemCheckBottom : MonoBehaviour
             }
         }else if(ChackForward()){
             ShowKeyUI.Instance.ShowUI(Key_UI_State.talk);
-            npc.GoTalk();
+            if(Input.GetKeyDown(KeyCode.F)){
+                npc.GoTalk();
+            }
+            
         }
         
     }
