@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             PlayerGoldManager.Instance.AddGold(gold);
+            QuestManager.Instance.UpCount(questType.killMushroom);
             Destroy(gameObject);
         }
     }

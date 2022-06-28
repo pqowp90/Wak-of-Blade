@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest : MonoSingleton<Quest>
-{
-    [SerializeField]
-    
-    void Start()
-    {
-        
-    }
+public enum questType{
+    killMushroom
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+[System.Serializable]
+public class Quest
+{
+    public string questName;
+    public string[] questDiscription;
+    public questType questType;
+    public int targetCount;
+    public int count = 0;
+    public int minLevel;
+    public int maxLevel;
+    public bool isClear = false;
+    
 }
