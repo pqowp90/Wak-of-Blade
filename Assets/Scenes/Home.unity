@@ -11946,6 +11946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca30e288c4da15459820bc2ab552412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gold: 0
   textMeshProUGUI: {fileID: 846937725}
 --- !u!4 &535255642
 Transform:
@@ -13368,7 +13369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 753507980335854660, guid: 1c0bca2834c169e4ba2490d8f962e915, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c0bca2834c169e4ba2490d8f962e915, type: 3}
@@ -21588,6 +21589,7 @@ MonoBehaviour:
   startAttackSpeed: 1
   slopeSpeed: 0.1
   attackingTime: 100
+  hp: 0
   fillBar: {fileID: 1422401386}
   hpChangeSpeed: 7
   textMeshProUGUI: {fileID: 795536675}
@@ -22762,7 +22764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1256580672401951544, guid: 544e282f86cef20449009295b5b436f7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5797097398727532822, guid: 544e282f86cef20449009295b5b436f7, type: 3}
       propertyPath: m_RootOrder

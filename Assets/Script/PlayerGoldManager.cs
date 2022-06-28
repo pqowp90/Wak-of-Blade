@@ -9,6 +9,7 @@ public class PlayerGoldManager : MonoSingleton<PlayerGoldManager>
         //저장된 골드 불러오기
         textMeshProUGUI.text = gold.ToString();
     }
+    [SerializeField]
     private long gold = 0;
     public void AddGold(int _gold){
         gold += _gold;
