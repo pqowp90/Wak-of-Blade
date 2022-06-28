@@ -5363,6 +5363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Area
   pos: {x: 19.961, y: -0.453, z: -38.576}
+  isHeal: 1
 --- !u!135 &32320812
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6077,6 +6078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Area
   pos: {x: 20, y: -0.33, z: -2.6}
+  isHeal: 0
 --- !u!135 &58905601
 SphereCollider:
   m_ObjectHideFlags: 0
