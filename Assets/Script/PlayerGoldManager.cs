@@ -23,5 +23,8 @@ public class PlayerGoldManager : MonoSingleton<PlayerGoldManager>
     private void SetGoldUI(){
         textMeshProUGUI.text = gold.ToString();
     }
+    public long GetGold(){
+        return gold;
+    }
     
 }

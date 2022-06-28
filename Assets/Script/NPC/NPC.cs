@@ -11,6 +11,8 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private float rotationDemp;
     Transform target;
+    [SerializeField]
+    private GameObject[] wapons;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,13 @@ public class NPC : MonoBehaviour
         }
     }
     public void GoTalk(){
-        
+        if(PlayerGoldManager.Instance.GetGold()>=100){
+            PlayerGoldManager.Instance.UseGold(60);
+            Instantiate(wapons[0], transform.position + Vector3.forward, Quaternion.identity);
+        }
+        else if(PlayerGoldManager.Instance.GetGold()>=60){
+            PlayerGoldManager.Instance.UseGold(60);
+            Instantiate(wapons[1], transform.position + Vector3.forward, Quaternion.identity);
+        }
     }
 }

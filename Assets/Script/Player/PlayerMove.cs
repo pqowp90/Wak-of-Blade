@@ -52,6 +52,7 @@ public class PlayerMove : MonoBehaviour
     private Tween attackTween;
     private bool willSlideOnSlope = true;
     private Vector3 downForce;
+    [SerializeField]
     private int hp;
     [SerializeField]
     Image fillBar;
