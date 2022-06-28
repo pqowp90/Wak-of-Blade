@@ -10983,11 +10983,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &417782104 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1256580672401951544, guid: 544e282f86cef20449009295b5b436f7, type: 3}
-  m_PrefabInstance: {fileID: 1967348730}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &423409893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15139,8 +15134,8 @@ MonoBehaviour:
   showMe: 1
   rotationDemp: 5
   wapons:
-  - {fileID: 417782104}
-  - {fileID: 2131311649}
+  - {fileID: 1256580672401951544, guid: 544e282f86cef20449009295b5b436f7, type: 3}
+  - {fileID: 753507980335854660, guid: 1c0bca2834c169e4ba2490d8f962e915, type: 3}
 --- !u!136 &929425371
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -24269,11 +24264,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 11100000, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
---- !u!1 &2131311649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 753507980335854660, guid: 1c0bca2834c169e4ba2490d8f962e915, type: 3}
-  m_PrefabInstance: {fileID: 764399607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2140704054
 PrefabInstance:
   m_ObjectHideFlags: 0
