@@ -26,7 +26,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
         }
     }
     private void Start(){
-        if(FindObjectOfType<T>()!=null){
+        if(FindObjectsOfType<T>().Length>1){
             Destroy(gameObject);
         }
     }

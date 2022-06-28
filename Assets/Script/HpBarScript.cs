@@ -25,22 +25,11 @@ public class HpBarScript : MonoBehaviour
             
             g_Object.SetHpbar(t_Hpbar);
             m_hpBarList.Add(t_Hpbar);
-
         }
     }
 
     // Update is called once per frame
-    private bool InScreen(Transform ObjTransform){
-        var planes = GeometryUtility.CalculateFrustumPlanes(m_camera);
-        var point = ObjTransform.position;
-        foreach (var plane in planes)
-        {
-            if(plane.GetDistanceToPoint(point)<0){
-                return false;
-            }
-        }
-        return true;
-    }
+    
     void Update()
     {
         for (int i=0;i<m_hpBarList.Count;i++)
@@ -54,7 +43,7 @@ public class HpBarScript : MonoBehaviour
             
 
             //Vector3.Dot(m_hpBarList[i].transform.position, Camera.main.transform.forward)<=0
-            m_hpBarList[i].inScreen = InScreen(m_objectList[i].transform);
+            m_hpBarList[i].inScreen = GameManager.InScreen(m_objectList[i].transform);
 
             m_hpBarList[i].transform.position = m_camera.WorldToScreenPoint(m_objectList[i].transform.position + Vector3.up);
         }

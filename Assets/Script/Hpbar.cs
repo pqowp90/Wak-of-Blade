@@ -11,7 +11,7 @@ public class Hpbar : MonoBehaviour, IPoolable
     private float realFillAmount;
     [SerializeField]
     private float hpChangeSpeed;
-    public CanvasGroup canvasGroup;
+    private CanvasGroup canvasGroup;
     private Transform playerTransform;
     public Transform enemyTransform;
     private bool ShowThis = false;

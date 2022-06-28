@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4149500873752918686}
   - component: {fileID: 1175800768065983097}
   - component: {fileID: 3882030954394587514}
+  - component: {fileID: 8221595996317386180}
   m_Layer: 5
   m_Name: TalkBox
   m_TagString: Untagged
@@ -95,7 +96,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: -13
   m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -132,6 +133,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxText: {fileID: 3282057497251590469}
+  contentSizeFitter: {fileID: 0}
+  npcTransfrom: {fileID: 0}
+  inScreen: 0
+  ShowThis: 0
+  hideDistance: 10
+--- !u!225 &8221595996317386180
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897453793156029737}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5894470101858220681
 GameObject:
   m_ObjectHideFlags: 0

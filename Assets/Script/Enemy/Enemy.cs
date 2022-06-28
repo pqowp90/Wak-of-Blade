@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     public Hpbar hpbar;
     [SerializeField]
     private int damage;
+    [SerializeField]
+    QuestType questType;
     public enum State{
         Idle,
         Move,
@@ -33,6 +35,10 @@ public class Enemy : MonoBehaviour
     }
     [SerializeField]
     State monsterState = State.Move;
+    [SerializeField]
+    private float bodyAttackTime;
+    private bool canAttack;
+
     public void HitEffect(){
         Transform bloodEffect = PoolManager.GetItem<Effect>("Blood").transform;
         bloodEffect.position = 
@@ -45,6 +51,13 @@ public class Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         characterController = GetComponent<CharacterController>();
         target = FindObjectOfType<PlayerMove>().gameObject;
+        StartCoroutine(AttackDeley());
+    }
+    private IEnumerator AttackDeley(){
+        while(true){
+            canAttack = true;
+            yield return new WaitForSeconds(bodyAttackTime);
+        }
     }
 
     private void Update()
@@ -104,7 +117,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             PlayerGoldManager.Instance.AddGold(gold);
-            QuestManager.Instance.UpCount(questType.killMushroom);
+            QuestManager.Instance.UpCount(questType);
             Destroy(gameObject);
         }
     }
@@ -122,7 +135,8 @@ public class Enemy : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(hit.gameObject.CompareTag("Player")){
+        if(hit.gameObject.CompareTag("Player")&&canAttack){
+            canAttack = false;
             hit.gameObject.GetComponent<PlayerMove>()?.loseHp(damage);
         }
         // 충돌된 물체의 릿지드 바디를 가져옴

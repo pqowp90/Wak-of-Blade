@@ -14,7 +14,10 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private GameObject[] wapons;
     private int questProgress = 0;
+    private int usingCount = 0;
     public List<Quest> quests = new List<Quest>();
+    public TalkBox talkBox;
+    private Coroutine talkCorutine;
     
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,11 @@ public class NPC : MonoBehaviour
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
         }
     }
-    public void GoTalk(){
+    public void TalkWithNPC(){
+        if(talkCorutine==null)
+            talkCorutine = StartCoroutine(GoTalk());
+    }
+    private IEnumerator GoTalk(){
         // if(PlayerGoldManager.Instance.GetGold()>=100){
         //     PlayerGoldManager.Instance.UseGold(60);
         //     Instantiate(wapons[0], transform.position + Vector3.forward, Quaternion.identity);
@@ -39,8 +46,32 @@ public class NPC : MonoBehaviour
         //     PlayerGoldManager.Instance.UseGold(60);
         //     Instantiate(wapons[1], transform.position + Vector3.forward, Quaternion.identity);
         // }
-        if(QuestManager.Instance.questLevel >= questProgress){
+        if(quests.Count>usingCount&&usingCount<=questProgress&&QuestManager.Instance.questLevel >= quests[questProgress].minLevel){
+            Quest quest = quests[usingCount];
+            usingCount++;
             
+            for(int i=0;i<quest.questDiscription.Length;++i){
+                talkBox.UpdateText(quest.questDiscription[i]);
+                yield return new WaitForSeconds(quest.questDiscription[i].Length * 0.1f);
+            }
+            
+            QuestManager.Instance.AddQuest(quest);
+            talkBox.ShowThis = false;
         }
+        else if(quests[questProgress].isClear){
+
+            QuestManager.Instance.RemoveQuest(quests[questProgress]);
+            questProgress++;
+            talkBox.UpdateText("수고했어~");
+            yield return new WaitForSeconds(2f);
+            talkBox.ShowThis = false;
+
+        }else{
+            talkBox.UpdateText("내가 맡긴일은 다 한거야?");
+            yield return new WaitForSeconds(2f);
+            talkBox.ShowThis = false;
+        }
+        talkCorutine = null;
+        
     }
 }
