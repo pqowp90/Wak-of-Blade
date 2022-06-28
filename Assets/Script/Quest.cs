@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum QuestType{
-    killMushroom
+    killMushroom,
+    KillBigMushroom,
 }
 
 
@@ -12,6 +13,7 @@ public class Quest
 {
     public string questName;
     public string[] questDiscription;
+    public string[] questClearDiscription;
     public QuestType questType;
     public int targetCount;
     public int count = 0;
@@ -19,5 +21,7 @@ public class Quest
     public int maxLevel;
     public bool isClear = false;
     public GameObject returnCourtesyPrefab;
+    public UnlockSkillType returnCourtesySkillType;
+    public int levelUp;
     
 }

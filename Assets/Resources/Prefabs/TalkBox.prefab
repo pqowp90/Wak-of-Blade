@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.2509804}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -138,6 +138,8 @@ MonoBehaviour:
   inScreen: 0
   ShowThis: 0
   hideDistance: 10
+  TextBoxSprite: {fileID: 21300000, guid: d87fdcbb6d5d0284f8ef49abf8077d60, type: 3}
+  FeelingSignSprite: {fileID: 21300000, guid: 2eae9f0c76fb9fc4689390d5a35950fd, type: 3}
 --- !u!225 &8221595996317386180
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -64,6 +64,7 @@ public class PlayerMove : MonoBehaviour
     TextMeshProUGUI textMeshProUGUI;
     private bool movePos = false;
     private Vector3 pos;
+    public GameObject dieImage;
     public void MoveTransorm(Vector3 _pos){
         pos = _pos;
         movePos = true;
@@ -93,6 +94,7 @@ public class PlayerMove : MonoBehaviour
         if(hp<=0)return;
         hp -= _hp;
         if(hp<=0){
+            dieImage.SetActive(true);
             MoveTransorm(new Vector3(19.961f, -0.453f, -38.576f));
             hp = maxHp;
         }
@@ -218,6 +220,12 @@ public class PlayerMove : MonoBehaviour
         animator.SetBool("PressingJump", Input.GetKey(KeyCode.Space)&&!usingSkill);
     }
     private void Update() {
+        if(dieImage.activeSelf == true){
+            if(Input.GetKeyDown(KeyCode.R)){
+                dieImage.SetActive(false);
+            }
+            return;
+        }
         Move();
         SetAttackSpeed();
         Attack();
@@ -226,6 +234,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetTrigger("GoAttack");
             AttackStart();
         }
+        
     }
     private void FixedUpdate() {
         if(addForce.x!=0){

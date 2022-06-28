@@ -34,10 +34,10 @@ public class HpBarScript : MonoBehaviour
     {
         for (int i=0;i<m_hpBarList.Count;i++)
         {
-            if(m_objectList[i]==null){
+            if(m_objectList[i]==null||m_objectList[i].gameObject.activeSelf==false){
                 m_hpBarList[i].gameObject.SetActive(false);
-                m_objectList.RemoveAt(i);
-                m_hpBarList.RemoveAt(i);
+                //m_objectList.RemoveAt(i);
+                //m_hpBarList.RemoveAt(i);
                 continue;
             }
             

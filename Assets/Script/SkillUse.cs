@@ -29,6 +29,18 @@ public class SkillUse : MonoBehaviour
     [SerializeField]
     private Transform UppercutEffectPos;
     private Coroutine UppercutCoroutine;
+    private bool canUseCharge;
+    private bool canUseUppercut;
+    public void UnlockSkillType(UnlockSkillType unlockSkillType){
+        switch(unlockSkillType){
+            case global::UnlockSkillType.charge:
+                canUseCharge = true;
+                break;
+            case global::UnlockSkillType.uppercut:
+                canUseUppercut = true;
+                break;
+        }
+    }
     private void Start() {
         playerMove = GetComponent<PlayerMove>();
         cameraMove = FindObjectOfType<CameraMove>();
@@ -67,6 +79,8 @@ public class SkillUse : MonoBehaviour
         Transform effectTransform = PoolManager.GetItem<Effect>("UppercutEffect").transform;
         effectTransform.position = UppercutEffectPos.position;
         effectTransform.rotation = UppercutEffectPos.rotation;
+        Collider[] colliders = Physics.OverlapSphere(UppercutEffectPos.position + Vector3.up, radius*2f, layermask);
+        AttackByCollider(colliders);
         effectTransform.SetParent(null);
 
 
@@ -102,10 +116,10 @@ public class SkillUse : MonoBehaviour
     }
     private void Update() {
         if(Input.GetKeyDown(KeyCode.LeftShift)){
-            if(!Uppercuting&&!Charging)
+            if(!Uppercuting&&!Charging&&canUseCharge)
                 Charge();
         }
-        if(Input.GetMouseButtonDown(1)){
+        if(Input.GetMouseButtonDown(1)&&canUseUppercut){
             if(!Uppercuting&&!Charging)
                 UppercutCoroutine = StartCoroutine(Uppercut());
         }
@@ -128,13 +142,29 @@ public class SkillUse : MonoBehaviour
     private float radius;
     private void ChackForward(){
         if(!Charging)return;
-        if(Physics.OverlapSphere(transform.position + transform.rotation*forwardCenter1, radius, layermask).Length>0){
+        Collider[] colliders = Physics.OverlapSphere(transform.position + transform.rotation*forwardCenter1, radius, layermask);
+        Collider[] colliders2 = Physics.OverlapSphere(transform.position + transform.rotation*forwardCenter2, radius, layermask);
+        Collider[] colliders3 = Physics.OverlapSphere(transform.position + transform.rotation*forwardCenter3, radius, layermask);
+        if(colliders.Length>0){
+            
             ChargeOff();
+            AttackByCollider(colliders);
         }
-        else if(Physics.OverlapSphere(transform.position + transform.rotation*forwardCenter2, radius, layermask).Length>0){
+        else if(colliders2.Length>0){
             ChargeOff();
-        }else if(Physics.OverlapSphere(transform.position + transform.rotation*forwardCenter3, radius, layermask).Length>0){
+            AttackByCollider(colliders2);
+        }
+        else if(colliders3.Length>0){
             ChargeOff();
+            AttackByCollider(colliders3);
+        }
+    }
+    private void AttackByCollider(Collider[] colliders){
+        foreach(var enemy in colliders){
+            if(enemy.CompareTag("Enemy")){
+                enemy.GetComponent<Enemy>().TakeDamage(50);
+                break;
+            }
         }
     }
 

@@ -39,11 +39,15 @@ public class Enemy : MonoBehaviour
     private float bodyAttackTime;
     private bool canAttack;
 
+
     public void HitEffect(){
         Transform bloodEffect = PoolManager.GetItem<Effect>("Blood").transform;
         bloodEffect.position = 
         effectCenterPos.position + 
         new Vector3(Random.Range(-effectDistance, effectDistance), Random.Range(-effectDistance, effectDistance), Random.Range(-effectDistance, effectDistance));
+    }
+    public void HpReset(){
+        hp = maxHp;
     }
     private void Start()
     {
@@ -118,7 +122,8 @@ public class Enemy : MonoBehaviour
         {
             PlayerGoldManager.Instance.AddGold(gold);
             QuestManager.Instance.UpCount(questType);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
     }
     private void OnTriggerEnter(Collider other)

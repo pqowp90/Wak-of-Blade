@@ -15,6 +15,7 @@ public class Potal : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         Debug.Log("포탈 이동");
         player.MoveTransorm(pos);
+        Respawn.Instance.RespawnEveryone();
         //SceneMoveManager.Instance.SceneMove(sceneName);
     }
 }
