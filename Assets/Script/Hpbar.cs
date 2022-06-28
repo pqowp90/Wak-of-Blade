@@ -14,7 +14,7 @@ public class Hpbar : MonoBehaviour, IPoolable
     private CanvasGroup canvasGroup;
     private Transform playerTransform;
     public Transform enemyTransform;
-    private bool ShowThis = false;
+    public bool ShowThis = false;
     [SerializeField]
     private float hideDistance;
     public bool inScreen;
