@@ -41,9 +41,13 @@ public class CameraMove : MonoBehaviour
         realCamera.DOShakePosition(duration, strength, vibrato, randomness, snapping, fadeOut).OnComplete(()=>{emptyObject.position = Vector3.zero;});
         
     }
+    public void ShakeCameraRotation(float duration, float strength = 90, int vibrato = 10, float randomness = 90, bool fadeOut = true){
+        realCamera.DOShakeRotation(duration, strength, vibrato, randomness, fadeOut);
+    }
     void LateUpdate()
     {   
         fakeCamera.localPosition = Vector3.Lerp(fakeCamera.localPosition, -realCamera.localPosition, 0.03f);
+        fakeCamera.localRotation = Quaternion.Lerp(fakeCamera.localRotation, Quaternion.Inverse(realCamera.localRotation), 0.05f);
         CameraRotate();
         CameraMoveFunc();
     }

@@ -7,6 +7,11 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake(){
         PoolManager.CreatePool<Effect>("Blood", gameObject);
         PoolManager.CreatePool<Effect>("ChargeEffect", gameObject);
+        PoolManager.CreatePool<Effect>("ChargeStart", gameObject);
+        PoolManager.CreatePool<Effect>("HitImpact", gameObject);
+        PoolManager.CreatePool<Effect>("AngGiMo", gameObject);
+        PoolManager.CreatePool<Effect>("Ddeack", gameObject);
+        PoolManager.CreatePool<Effect>("Jump", gameObject);
         PoolManager.CreatePool<Effect>("UppercutEffect", gameObject);
         PoolManager.CreatePool<Hpbar>("HpBar", gameObject);
         PoolManager.CreatePool<TalkBox>("TalkBox", gameObject);

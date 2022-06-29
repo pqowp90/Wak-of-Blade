@@ -29,8 +29,11 @@ public class SkillUse : MonoBehaviour
     [SerializeField]
     private Transform UppercutEffectPos;
     private Coroutine UppercutCoroutine;
+    [SerializeField]
     private bool canUseCharge;
+    [SerializeField]
     private bool canUseUppercut;
+    private AudioSource audioSource;
     public void UnlockSkillType(UnlockSkillType unlockSkillType){
         switch(unlockSkillType){
             case global::UnlockSkillType.charge:
@@ -55,7 +58,10 @@ public class SkillUse : MonoBehaviour
             TrailsOn(false, true);
             playerMove.SetUsingSkill(false);
         }
-        
+        Transform effectTransform = PoolManager.GetItem<Effect>("ChargeStart").transform;
+        effectTransform.position = ChargeEffectPos.position;
+        effectTransform = PoolManager.GetItem<Effect>("AngGiMo").transform;
+        effectTransform.position = ChargeEffectPos.position;
         animator.ResetTrigger("ChargeStart");
         animator.ResetTrigger("ChargeEnd");
         playerMove.SetUsingSkill(true);
@@ -74,13 +80,16 @@ public class SkillUse : MonoBehaviour
         animator.SetTrigger("Uppercut");
         yield return new WaitForSeconds(0.25f);
         playerMove.addForceGo(transform.rotation*new Vector3(0f, 9f, 5f));
-        cameraMove.ShakeCamera(0.15f, Vector3.up, 40, 90);
+        cameraMove.ShakeCamera(0.15f, Vector3.up * 2f, 60, 90);
+        
         playerMove.SetUsingSkill(false);
         TrailsOn(true, false);
-
+        playerMove.loseHp(20);
         Transform effectTransform = PoolManager.GetItem<Effect>("UppercutEffect").transform;
         effectTransform.position = UppercutEffectPos.position;
         effectTransform.rotation = UppercutEffectPos.rotation;
+        effectTransform = PoolManager.GetItem<Effect>("Ddeack").transform;
+        effectTransform.position = transform.position;
         Collider[] colliders = Physics.OverlapSphere(UppercutEffectPos.position + Vector3.up, radius*2f, layermask);
         AttackByCollider(colliders);
         effectTransform.SetParent(null);
@@ -103,6 +112,7 @@ public class SkillUse : MonoBehaviour
         cameraMove.ShakeCamera(0.4f, 1, 20, 90);
         playerMove.addForceGo(transform.rotation*new Vector3(0f, 3f, -13f));
         playerMove.SetUsingSkill(false);
+        playerMove.loseHp(50);
         TrailsOn(false, false);
         animator.SetTrigger("ChargeEnd");
         cameraMove.SlowMouse(false);
@@ -165,9 +175,19 @@ public class SkillUse : MonoBehaviour
         foreach(var enemy in colliders){
             if(enemy.CompareTag("Enemy")){
                 enemy.GetComponent<Enemy>().TakeDamage(50);
+                StartCoroutine(HitImpactSpown());
                 break;
             }
+            
         }
+    }
+    private IEnumerator HitImpactSpown(){
+        for(int i=0;i<3;i++){
+            Transform effectTransform = PoolManager.GetItem<Effect>("HitImpact").transform;
+            effectTransform.position = transform.position;
+            yield return new WaitForSeconds(0.02f);
+        }
+        
     }
 
 

@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillBar: {fileID: 3213340635684098308}
-  hpChangeSpeed: 10
-  canvasGroup: {fileID: 0}
+  hpChangeSpeed: 20
   enemyTransform: {fileID: 0}
+  ShowThis: 0
   hideDistance: 7
   inScreen: 0
 --- !u!225 &3881512944550102165

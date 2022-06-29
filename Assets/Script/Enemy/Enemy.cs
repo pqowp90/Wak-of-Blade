@@ -27,7 +27,16 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int damage;
     [SerializeField]
+    private float mass;
+    [SerializeField]
+    private Vector3 velocity;
+    [SerializeField]
+    private Vector3 realVelocity;
+    [SerializeField]
     QuestType questType;
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip audioClip;
     public enum State{
         Idle,
         Move,
@@ -52,6 +61,7 @@ public class Enemy : MonoBehaviour
     }
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         hp = maxHp;
         enemyRenderer = GetComponent<Renderer>();
         characterController = GetComponent<CharacterController>();
@@ -89,17 +99,26 @@ public class Enemy : MonoBehaviour
         {
             nextPos.y -= 9.8f * Time.deltaTime;
         }
+        realVelocity = Vector3.zero;
         switch(monsterState){
             case State.Idle:
             break;
             case State.Move:
-            characterController?.Move(nextPos);
+            realVelocity += nextPos;
             break;
             case State.Attack:
             break;
             default:
             break;
         }
+        velocity *= 0.7f * Time.deltaTime;
+        if(characterController.isGrounded){
+            velocity.y = -0.1f;
+        }else{
+            velocity.y -= 10f * Time.deltaTime;
+        }
+        realVelocity += velocity;
+        characterController?.Move(realVelocity);
     }
     private void ChangeState(){
         if(Vector3.Distance(transform.position, target.transform.position)>attackDistance){
@@ -123,7 +142,7 @@ public class Enemy : MonoBehaviour
         count++;
         hp -= damage;
         hpbar?.UpdateHpbar(hp/maxHp);
-
+        audioSource.PlayOneShot(audioClip);
         if (hp <= 0)
         {
             PlayerGoldManager.Instance.AddGold(gold);
@@ -133,6 +152,7 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
             //Destroy(gameObject);
         }
+        
     }
     private void OnTriggerEnter(Collider other)
     {

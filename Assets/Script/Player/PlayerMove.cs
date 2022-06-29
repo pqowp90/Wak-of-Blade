@@ -26,6 +26,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float resistance;
     private Vector3 hitPointNormal;
+    [SerializeField]
+    private PlaySound swordSoundPlayer;
+    private bool isDead;
     [Header("PlayerStat")]
     [SerializeField]
     private float atkPower;
@@ -62,6 +65,7 @@ public class PlayerMove : MonoBehaviour
     private float hpChangeSpeed;
     [SerializeField]
     TextMeshProUGUI textMeshProUGUI;
+    
 
     public GameObject dieImage;
     public void MoveTransorm(Vector3 _pos, bool heal){
@@ -96,6 +100,7 @@ public class PlayerMove : MonoBehaviour
         if(hp<=0)return;
         hp -= _hp;
         if(hp<=0){
+            isDead = true;
             dieImage.SetActive(true);
             MoveTransorm(new Vector3(19.961f, -0.453f, -38.576f), true);
         }
@@ -126,6 +131,7 @@ public class PlayerMove : MonoBehaviour
         moveY = 0f;
         nowAttackSpeed = startAttackSpeed;
         cameraMove = Camera.main.transform.GetComponentInParent<CameraMove>();
+        
         loseHp(0);
     }
     private void Move(){
@@ -161,6 +167,8 @@ public class PlayerMove : MonoBehaviour
             if(Input.GetButton("Jump")&&!usingSkill&&!IsSliding){
                 realMoveDir.y = jumpPow;
                 animator.SetTrigger("Jump");
+                Transform getpool = PoolManager.GetItem<Effect>("Jump").transform;
+                getpool.position = transform.position;
             }
         }
         else{
@@ -193,7 +201,7 @@ public class PlayerMove : MonoBehaviour
         return !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")&&!animator.GetBool("Attacking");
     }
     private void Attack(){
-        if(Input.GetMouseButtonDown(0)&&!NoInput&&nowWapon != null&&!usingSkill){
+        if(Input.GetMouseButtonDown(0)&&!NoInput&&nowWapon != null&&!usingSkill&&!isDead){
             animator.SetBool("Attacking", true);
             
         }
@@ -203,6 +211,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void AttackStart(){
         attackedEnemy.Clear();
+        swordSoundPlayer.Play(); 
         SetAttackSpeed();
         waponCollider.enabled = true;
     }
@@ -216,16 +225,17 @@ public class PlayerMove : MonoBehaviour
         animator.SetBool("PressingJump", Input.GetKey(KeyCode.Space)&&!usingSkill);
     }
     private void Update() {
+        Attack();
+        SetAttackSpeed();
+        PlayerHpBar();
         if(dieImage.activeSelf == true){
             if(Input.GetKeyDown(KeyCode.R)){
                 dieImage.SetActive(false);
+                isDead = false;
             }
             return;
         }
         Move();
-        SetAttackSpeed();
-        Attack();
-        PlayerHpBar();
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("AttackWait")){
             animator.SetTrigger("GoAttack");
             AttackStart();
@@ -282,7 +292,9 @@ public class PlayerMove : MonoBehaviour
         Enemy enemy = obj.GetComponent<Enemy>();
         enemy.TakeDamage(atkPower+nowWapon.damage);
         enemy.HitEffect();
-        cameraMove.ShakeCamera(0.05f, new Vector3(0f, 0.2f, 0f), 40, 90);
+        cameraMove.ShakeCamera(0.05f, new Vector3(0f, 0.3f, 0f), 40, 90);
+        cameraMove.ShakeCameraRotation(0.15f, 1, 50, 90);
+        
     }
     private void AttackSpeedUp(){
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")){
