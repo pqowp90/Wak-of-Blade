@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float bodyAttackTime;
     private bool canAttack;
+    private Coroutine attackCoroutine;
 
 
     public void HitEffect(){
@@ -55,7 +56,12 @@ public class Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         characterController = GetComponent<CharacterController>();
         target = FindObjectOfType<PlayerMove>().gameObject;
-        StartCoroutine(AttackDeley());
+        if(attackCoroutine == null)
+            attackCoroutine = StartCoroutine(AttackDeley());
+    }
+    private void OnEnable() {
+        if(attackCoroutine == null)
+            attackCoroutine = StartCoroutine(AttackDeley());
     }
     private IEnumerator AttackDeley(){
         while(true){
@@ -122,6 +128,8 @@ public class Enemy : MonoBehaviour
         {
             PlayerGoldManager.Instance.AddGold(gold);
             QuestManager.Instance.UpCount(questType);
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
             gameObject.SetActive(false);
             //Destroy(gameObject);
         }

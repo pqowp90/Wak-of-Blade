@@ -69,6 +69,7 @@ public class PlayerMove : MonoBehaviour
         transform.position = _pos;
         characterController.enabled = true;
         if(heal)hp = maxHp;
+        PlayerHpBar();
     }
     private bool IsSliding{
         get{
@@ -98,13 +99,14 @@ public class PlayerMove : MonoBehaviour
             dieImage.SetActive(true);
             MoveTransorm(new Vector3(19.961f, -0.453f, -38.576f), true);
         }
-        textMeshProUGUI.text = ""+hp+"/"+maxHp;
+        PlayerHpBar();
     }
 
     private void PlayerHpBar(){
         fillAmount = (float)hp/(float)maxHp;
         realFillAmount = Mathf.Lerp(realFillAmount, fillAmount, Time.deltaTime * hpChangeSpeed);
         fillBar.fillAmount = realFillAmount;
+        textMeshProUGUI.text = ""+hp+"/"+maxHp;
     }
     public void addForceGo(Vector3 velocity){
         moveY = velocity.y;
