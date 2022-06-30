@@ -10,10 +10,16 @@ public class WaponManager : MonoSingleton<WaponManager>
     private PlayerMove playerMove;
     [SerializeField]
     private Transform handle;
+    [SerializeField]
+    private GameObject end;
     private void Start(){
+        Time.timeScale = 1f;
         playerMove = FindObjectOfType<PlayerMove>();
     }
     public void SetWaponThis(Item item){
+        if(item.id==2){
+            StartCoroutine(TheEnd());
+        }
         if(playerMove==null)playerMove = FindObjectOfType<PlayerMove>();
         if(playerMove==null)return;
         if(item == null){
@@ -34,5 +40,16 @@ public class WaponManager : MonoSingleton<WaponManager>
         sword.gameObject.SetActive(true);
         playerMove.waponCollider = sword.GetComponentInChildren<Collider>();
         lastWapon = sword;
+        
+    }
+    private IEnumerator TheEnd(){
+        end.SetActive(true);
+        Time.timeScale = 0f;
+        
+        while(true){
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

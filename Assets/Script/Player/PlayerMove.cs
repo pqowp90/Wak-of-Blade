@@ -265,7 +265,7 @@ public class PlayerMove : MonoBehaviour
         labelStyle.normal.textColor = Color.white;
         //캐릭터 현재 속도
         //GUILayout.Label("Y보정치 : " + downForce.y, labelStyle);
-        GUILayout.Label("차지:Shift 올려베기:우클릭 인벤토리:Tap", labelStyle);
+        //GUILayout.Label("차지:Shift 올려베기:우클릭 인벤토리:Tap", labelStyle);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
