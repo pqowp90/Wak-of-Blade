@@ -17,9 +17,7 @@ public class WaponManager : MonoSingleton<WaponManager>
         playerMove = FindObjectOfType<PlayerMove>();
     }
     public void SetWaponThis(Item item){
-        if(item.id==2){
-            StartCoroutine(TheEnd());
-        }
+        
         if(playerMove==null)playerMove = FindObjectOfType<PlayerMove>();
         if(playerMove==null)return;
         if(item == null){
@@ -27,6 +25,9 @@ public class WaponManager : MonoSingleton<WaponManager>
             lastWapon?.gameObject.SetActive(false);
             lastWapon?.SetParent(transform);
             return;
+        }
+        if(item.id==2){
+            StartCoroutine(TheEnd());
         }
         if(lastWapon != null){
             lastWapon.gameObject.SetActive(false);

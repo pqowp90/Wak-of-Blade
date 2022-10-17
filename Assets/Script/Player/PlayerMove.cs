@@ -176,6 +176,7 @@ public class PlayerMove : MonoBehaviour
             realMoveDir.y -= gravity * Time.deltaTime;
         }
         addForce.y = 0f;
+        
 
 
         if(MoveDir != Vector3.zero){
